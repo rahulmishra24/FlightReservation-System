@@ -34,7 +34,7 @@ class AuthViewSet(viewsets.GenericViewSet):
         data = serializers.AuthUserSerializer(user).data
         return Response(data=data, status=status.HTTP_200_OK)
 
-    @action(methods=['POST', ], detail=False)
+    @action(methods=['POST', ], detail=False,)
     def register(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -44,7 +44,8 @@ class AuthViewSet(viewsets.GenericViewSet):
         return Response(data=data, status=status.HTTP_201_CREATED)
 
 
-    @action(methods=['POST', ], detail=False)
+    @action(methods=['POST', ], detail=False,permission_classes=[IsAuthenticated, ])
+    
     def logout(self, request):
         
         request.user.auth_token.delete()
