@@ -48,9 +48,7 @@ class FlightViewSet(viewsets.ModelViewSet):
     serializer_class = FlightSerializers
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializers
+
       
     
 
